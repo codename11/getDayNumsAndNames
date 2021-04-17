@@ -15,12 +15,12 @@
             $obj->dayNamesInMonth[$i] = date("l", strtotime($i."-".$obj->monthNum."-".$obj->year));
         }
 
-        echo(json_encode($obj));
+        return json_encode($obj);
 
     }
     
     if(isset($_POST) && !empty($_POST["datum"])){
-        getDayNumsAndNames(1, $_POST["datum"]);
+        echo (getDayNumsAndNames($_POST["datum"]));
     }
     
 ?>
