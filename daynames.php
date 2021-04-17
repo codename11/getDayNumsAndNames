@@ -1,6 +1,6 @@
 <?php 
 
-    function getDayNumsAndNames($calendar, $date){
+    function getDayNumsAndNames($date){
 
         $obj = new stdClass();
         $str = strtotime($date);
