@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>Show a Date Control</h1>
+
+<form id="forma" onsubmit="test(event)">
+
+  <input type="month" id="datum" name="datum">
+  <input type="submit">
+
+</form>
+
+<script>
+
+    function test(e){
+
+        e.preventDefault();
+        let forma = document.getElementById("forma");
+        let date = forma.children[0];
+        
+        let url = "daynames.php";
+        let formData = new FormData(forma);
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Accept": 'application/json',
+            },
+            body: formData
+        })
+        .then((response) => {
+
+            return response.json();
+
+        })
+        .then((res) => {
+            
+            console.log(res);
+
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
