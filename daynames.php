@@ -10,9 +10,13 @@
 
         $numOfDays=cal_days_in_month(CAL_GREGORIAN,$obj->monthNum,$obj->year);
 
-        $obj->dayNamesInMonth = [];
+        $obj->dayNamesInMonthWithNums = [];
         for ($i = 1; $i <= $numOfDays; $i++) {
-            $obj->dayNamesInMonth[$i] = date("l", strtotime($i."-".$obj->monthNum."-".$obj->year));
+
+            $obj->dayNamesInMonthWithNums[$i] = new stdClass();
+            $obj->dayNamesInMonthWithNums[$i]->dayName = date("l", strtotime($i."-".$obj->monthNum."-".$obj->year));
+            $obj->dayNamesInMonthWithNums[$i]->dayNum = $i;
+            
         }
 
         return json_encode($obj);
